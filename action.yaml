@@ -10,6 +10,7 @@ runs:
     run: bash ./prepare.sh
     shell: bash
     working-directory: ${{ GITHUB.ACTION_PATH }}
+  - uses: actions/setup-node@v4
   - id: cache
     uses: actions/cache@v3
     with:
