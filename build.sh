@@ -49,13 +49,13 @@ echo Building Skia...
 	#   skia_use_zlib: Only used for PDF and RAW files.
 	#   skia_use_libgifcodec: Only used for GIFs, which Aseprite doesn't use.
 	#   skia_enable_{particles,skparagraph,sktext}: Aseprite does not link against this library.
-	env -C ./clone/submodules/skia gn gen "skia" --args="$(printf '%s ' \
+	env -C skia gn gen "./clone/submodules/skia" --args="$(printf '%s ' \
 is_official_build=true skia_build_fuzzers=false \
 skia_enable_{pdf,skottie,sksl,svg}=false \
 skia_use_{libjpeg_turbo,libwebp}_{encode,decode}=false \
 skia_use_{expat,piex,xps,zlib,libgifcodec}=false \
 skia_enable_{particles,skparagraph,sktext}=false)"
-	ninja -C "skia" ./clone/submodules/skia modules
+	ninja -C "./clone/submodules/skia" skia modules
 
 cmake -E make_directory build
 cmake -E chdir build cmake -G Ninja -DENABLE_UI=OFF -DENABLE_UPDATER=OFF -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia -DSKIA_DIR="../clone/submodules/skia" -DSKIA_LIBRARY_DIR="skia" -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES ../clone/submodules/aseprite/aseprite
