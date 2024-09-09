@@ -23,12 +23,13 @@ else
   choco install ninja
 fi
 
-echo Building Skia...
+build_skia() {
+	echo Building Skia...
+	local _skiadir="./clone/submodules/skia/obj"
 	export CXX=g++
 	export CC=gcc
 	export AR=ar
 	export NM=nm
-  mkdir skia
 	# Flags can be found by running `gn args --list "$_skiadir"` from skia's directory.
 	# (Pipe the output somewhere, there's a LOT of args.)
 	#
@@ -49,16 +50,19 @@ echo Building Skia...
 	#   skia_use_zlib: Only used for PDF and RAW files.
 	#   skia_use_libgifcodec: Only used for GIFs, which Aseprite doesn't use.
 	#   skia_enable_{particles,skparagraph,sktext}: Aseprite does not link against this library.
-	env -C ./clone/submodules/skia gn gen "skia" --args="$(printf '%s ' \
+	env -C skia gn gen "$_skiadir" --args="$(printf '%s ' \
 is_official_build=true skia_build_fuzzers=false \
 skia_enable_{pdf,skottie,sksl,svg}=false \
 skia_use_{libjpeg_turbo,libwebp}_{encode,decode}=false \
 skia_use_{expat,piex,xps,zlib,libgifcodec}=false \
 skia_enable_{particles,skparagraph,sktext}=false)"
-	ninja -C "./clone/submodules/skia" skia modules
+	ninja -C "$_skiadir" skia modules
+}
+
+build_skia()
 
 cmake -E make_directory build
-cmake -E chdir build cmake -G Ninja -DENABLE_UI=OFF -DENABLE_UPDATER=OFF -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia -DSKIA_DIR="../clone/submodules/skia" -DSKIA_LIBRARY_DIR="skia" -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES ../clone/submodules/aseprite/aseprite
+cmake -E chdir build cmake -G Ninja -DENABLE_UI=OFF -DENABLE_UPDATER=OFF -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia -DSKIA_DIR="../clone/submodules/skia" -DSKIA_LIBRARY_DIR="../clone/submodules/skia/obj" -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES ../clone/submodules/aseprite/aseprite
 cd build
 
 if [ "$(uname)" == "Darwin" ]; then
