@@ -31,7 +31,7 @@ build_skia() {
 build_skia
 
 cmake -E make_directory build
-cmake -E chdir build cmake -G Ninja -DENABLE_UI=OFF -DENABLE_UPDATER=OFF -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia -DSKIA_DIR="../skia" -DSKIA_LIBRARY_DIR="../skia" -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES ../clone/submodules/aseprite/aseprite
+cmake -E chdir build cmake -G Ninja -DENABLE_UI=OFF -DENABLE_UPDATER=OFF -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia -DSKIA_DIR="../skia" -DSKIA_LIBRARY_DIR="../skia/out/Release-x64" -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES ../clone/submodules/aseprite/aseprite
 cd build
 
 if [ "$(uname)" == "Darwin" ]; then
