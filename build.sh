@@ -61,7 +61,7 @@ skia_enable_{particles,skparagraph,sktext}=false)"
 	ninja -C "$_skiadir" skia modules
 }
 
-build_skia()
+build_skia
 
 cmake -E make_directory build
 cmake -E chdir build cmake -G Ninja -DENABLE_UI=OFF -DENABLE_UPDATER=OFF -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia -DSKIA_DIR="../clone/submodules/skia" -DSKIA_LIBRARY_DIR="../clone/submodules/skia/obj" -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES ../clone/submodules/aseprite/aseprite
