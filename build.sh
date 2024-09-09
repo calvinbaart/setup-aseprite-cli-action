@@ -25,13 +25,13 @@ fi
 
 build_skia() {
 	wget https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Linux-Release-x64-libstdc++.zip
-  unzip Skia-Linux-Release-x64-libstdc++.zip
+  unzip Skia-Linux-Release-x64-libstdc++.zip -d skia
 }
 
 build_skia
 
 cmake -E make_directory build
-cmake -E chdir build cmake -G Ninja -DENABLE_UI=OFF -DENABLE_UPDATER=OFF -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia -DSKIA_DIR="../clone/submodules/skia" -DSKIA_LIBRARY_DIR="../clone/submodules/skia/obj" -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES ../clone/submodules/aseprite/aseprite
+cmake -E chdir build cmake -G Ninja -DENABLE_UI=OFF -DENABLE_UPDATER=OFF -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia -DSKIA_DIR="skia" -DSKIA_LIBRARY_DIR="skia" -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES ../clone/submodules/aseprite/aseprite
 cd build
 
 if [ "$(uname)" == "Darwin" ]; then
