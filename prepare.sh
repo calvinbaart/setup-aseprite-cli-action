@@ -11,4 +11,4 @@ git init
 git remote add origin https://github.com/calvinbaart/setup-aseprite-cli-action.git
 git fetch origin master:temp
 
-echo ::set-output name=sha::$(git rev-parse temp)
+echo "sha=$(git rev-parse temp)" >> $GITHUB_OUTPUT

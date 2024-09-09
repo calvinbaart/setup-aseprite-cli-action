@@ -11,7 +11,7 @@ runs:
     shell: bash
     working-directory: ${{ GITHUB.ACTION_PATH }}
   - id: cache
-    uses: actions/cache@v3
+    uses: actions/cache@v4
     with:
       path: aseprite/build/bin
       key: ${{ runner.os }}-aseprite
