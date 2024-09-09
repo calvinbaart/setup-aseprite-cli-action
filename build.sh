@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -e
 
 if [ -f "$PWD/build/bin/aseprite" ]; then
