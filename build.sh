@@ -8,14 +8,15 @@ fi
 cd clone
 git checkout temp
 
-git submodule update --init --recursive --depth 1 submodules/aseprite/aseprite
+mkdir -p submodules/aseprite/aseprite
+git clone https://github.com/aseprite/aseprite.git submodules/aseprite/aseprite
 cd ..
 
 if [ "$(uname)" == "Darwin" ]; then
   brew install ninja
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  sudo apt-get update
-  sudo apt-get install ninja-build xorg-dev
+  apt-get update
+  apt-get install ninja-build xorg-dev
 else
   choco install ninja
 fi

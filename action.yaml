@@ -8,16 +8,13 @@ runs:
   steps:
   - id: prepare
     run: bash ./prepare.sh
-    env:
-      NEOMURA_SETUP_ASEPRITE_CLI_ACTION_REPOSITORY: ${{ GITHUB.ACTION_REPOSITORY }}
-      NEOMURA_SETUP_ASEPRITE_CLI_ACTION_REF: ${{ GITHUB.ACTION_REF }}
     shell: bash
     working-directory: ${{ GITHUB.ACTION_PATH }}
   - id: cache
     uses: actions/cache@v3
     with:
-      path: ${{ GITHUB.ACTION_PATH }}/build/bin
-      key: neomura-setup-aseprite-cli-action-${{ GITHUB.REPOSITORY }}-${{ GITHUB.REF }}-${{ runner.os }}-${{ steps.prepare.outputs.sha }}
+      path: aseprite/build/bin
+      key: ${{ runner.os }}-aseprite
   - run: ./build.sh
     shell: bash
     working-directory: ${{ GITHUB.ACTION_PATH }}

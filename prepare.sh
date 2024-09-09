@@ -8,7 +8,7 @@ mkdir clone
 cd clone
 
 git init
-git remote add origin https://github.com/$NEOMURA_SETUP_ASEPRITE_CLI_ACTION_REPOSITORY
-git fetch origin $NEOMURA_SETUP_ASEPRITE_CLI_ACTION_REF:temp
+git remote add origin https://github.com/calvinbaart/setup-aseprite-cli-action.git
+git fetch origin master:temp
 
 echo ::set-output name=sha::$(git rev-parse temp)
