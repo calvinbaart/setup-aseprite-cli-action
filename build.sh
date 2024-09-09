@@ -49,7 +49,7 @@ echo Building Skia...
 	#   skia_use_zlib: Only used for PDF and RAW files.
 	#   skia_use_libgifcodec: Only used for GIFs, which Aseprite doesn't use.
 	#   skia_enable_{particles,skparagraph,sktext}: Aseprite does not link against this library.
-	env -C skia gn gen "./clone/submodules/skia" --args="$(printf '%s ' \
+	env -C ./clone/submodules/skia gn gen "skia" --args="$(printf '%s ' \
 is_official_build=true skia_build_fuzzers=false \
 skia_enable_{pdf,skottie,sksl,svg}=false \
 skia_use_{libjpeg_turbo,libwebp}_{encode,decode}=false \
