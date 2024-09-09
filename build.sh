@@ -28,6 +28,7 @@ echo Building Skia...
 	export CC=gcc
 	export AR=ar
 	export NM=nm
+  mkdir skia
 	# Flags can be found by running `gn args --list "$_skiadir"` from skia's directory.
 	# (Pipe the output somewhere, there's a LOT of args.)
 	#
