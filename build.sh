@@ -22,4 +22,8 @@ git checkout temp
 mkdir -p submodules/aseprite/aseprite
 git clone --recurse-submodules -j8 https://github.com/aseprite/aseprite.git submodules/aseprite/aseprite
 cd submodules/aseprite/aseprite
-./build.sh --auto
+./build.sh --auto --norun
+
+cd ../../../../
+mv clone/submodules/aseprite/aseprite/build .
+
