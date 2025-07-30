@@ -24,8 +24,8 @@ else
 fi
 
 build_skia() {
-	wget https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Linux-Release-x64-libstdc++.zip
-  unzip Skia-Linux-Release-x64-libstdc++.zip -d skia
+	wget https://github.com/aseprite/skia/releases/download/m124-08a5439a6b/Skia-Linux-Release-x64.zip
+        unzip Skia-Linux-Release-x64.zip -d skia
 }
 
 build_skia
