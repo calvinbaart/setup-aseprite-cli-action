@@ -15,10 +15,6 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 else
   choco install ninja
 fi
-  apt-get install -y ninja-build xorg-dev cmake g++ libcurl4-gnutls-dev libharfbuzz-dev libwebp-dev gn libgif-dev libtiff5-dev libjpeg-dev libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev libtinyxml-dev libtinyxml2-dev libcmark-dev
-else
-  choco install ninja
-fi
 
 cd clone
 git checkout temp
