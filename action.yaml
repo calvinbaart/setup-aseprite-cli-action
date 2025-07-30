@@ -7,7 +7,7 @@ runs:
   using: composite
   steps:
   - id: prepare
-    run: su -c 'bash ./prepare.sh' calvin
+    run: ./prepare.sh
     shell: bash
     working-directory: ${{ GITHUB.ACTION_PATH }}
   - id: cache
@@ -15,9 +15,9 @@ runs:
     with:
       path: ${{ GITHUB.ACTION_PATH }}/build/bin
       key: ${{ runner.os }}-aseprite
-  - run: su -c 'bash ./build.sh' calvin
+  - run: ./build.sh
     shell: bash
     working-directory: ${{ GITHUB.ACTION_PATH }}
-  - run: su -c 'bash ./install.sh' calvin
+  - run: ./install.sh
     shell: bash
     working-directory: ${{ GITHUB.ACTION_PATH }}
