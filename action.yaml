@@ -7,7 +7,7 @@ runs:
   using: composite
   steps:
   - id: prepare
-    run: bash ./prepare.sh
+    run: ./prepare.sh
     shell: bash
     working-directory: ${{ GITHUB.ACTION_PATH }}
   - id: cache
