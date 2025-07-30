@@ -14,15 +14,6 @@ mkdir -p submodules/aseprite/aseprite
 git clone --recurse-submodules -j8 https://github.com/aseprite/aseprite.git submodules/aseprite/aseprite
 cd ..
 
-if [ "$(uname)" == "Darwin" ]; then
-  brew install ninja
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  apt-get update
-  apt-get install -y ninja-build xorg-dev cmake g++ libcurl4-gnutls-dev libharfbuzz-dev libwebp-dev gn libgif-dev libtiff5-dev libjpeg-dev libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev libtinyxml-dev libtinyxml2-dev libcmark-dev
-else
-  choco install ninja
-fi
-
 build_skia() {
 	wget https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Linux-Release-x64-libstdc++.zip
   unzip Skia-Linux-Release-x64-libstdc++.zip -d skia
